@@ -1,32 +1,20 @@
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
-## Hyperledger Fabric Playground
+## Add a New Organization to Hyperledger Fabric Channel
 
-Please visit the [installation instructions](http://hyperledger-fabric.readthedocs.io/en/latest/install.html)
-to ensure you have the correct prerequisites installed. Please use the
-version of the documentation that matches the version of the software you
-intend to use to ensure alignment.
-
-## Download Binaries and Docker Images
-
-The installation instructions will utilize `scripts/bootstrap.sh` (available in the fabric repository)
-script to download all of the requisite Hyperledger Fabric binaries and docker
-images, and tag the images with the 'latest' tag. Optionally,
-specify a version for fabric, fabric-ca and thirdparty images. If versions
-are not passed, the latest available versions will be downloaded.
-
-The script will also clone fabric-samples repository using the version tag that
-is aligned with the Fabric version.
-
-You can also download the script and execute locally:
-
+1. First, you are in the add-ord directory then use the following command:
 ```bash
-# Fetch bootstrap.sh from fabric repository using
-curl -sS https://raw.githubusercontent.com/hyperledger/fabric/master/scripts/bootstrap.sh -o ./scripts/bootstrap.sh
-# Change file mode to executable
-chmod +x ./scripts/bootstrap.sh
-# Download binaries and docker images
-./scripts/bootstrap.sh [version] [ca version] [thirdparty_version]
+$ ./fabcar/startFabric.sh 
+``` 
+Please wait a few minutes for the network started up. You can take a look at what nodes are running:
+```bash
+$ docker ps -a
+```
+
+2. After the network started, you run the script below to add a new organization:
+```bash
+# ./first-network/eyfn.sh up -c [channel] -s [world state] -i [images version] -d [delay time]
+$ ./first-network/eyfn.sh up -c mychannel -s couchdb -i 1.4.3 -d 6
 ```
 
 ## License <a name="license"></a>
