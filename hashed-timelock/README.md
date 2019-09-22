@@ -17,11 +17,12 @@ $ docker ps -a
 $ ./first-network/eyfn.sh up -c mychannel -s couchdb -i 1.4.3 -d 6
 ```
 
-3. After the network started, you run the script below to add a new organization:
+## Upgrade Your Chaincode
+
+3. Execute the command like this to upgrade your chaincode:
 ```bash
-# ./first-network/eyfn.sh up -c [channel] -s [world state] -i [images version] -d [delay time]
-$ ./first-network/eyfn.sh up -c mychannel -s couchdb -i 1.4.3 -d 6
-```
+$ ./first-network/upgrade.sh upgrade -c mychannel -e 3.0
+``` 
 
 ## License <a name="license"></a>
 

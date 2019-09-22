@@ -159,9 +159,15 @@ upgradeChaincode() {
   PEER=$1
   ORG=$2
   setGlobals $PEER $ORG
+  VERSION=${3:-1.0}
+echo "===================== VERSION ===================== "
+echo ${PEER}
+echo ${ORG}
+echo ${VERSION}
+echo "===================== VERSION ===================== "
 
   set -x
-  peer chaincode upgrade -o orderer.example.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n fabcar -v 2.0 -c '{"Args":["initLedger"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer','Org3MSP.peer')"
+  peer chaincode upgrade -o orderer.example.com:7050 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA -C $CHANNEL_NAME -n fabcar -v ${VERSION} -c '{"Args":["initLedger"]}' -P "AND ('Org1MSP.peer','Org2MSP.peer','Org3MSP.peer')"
   res=$?
   set +x
   cat log.txt

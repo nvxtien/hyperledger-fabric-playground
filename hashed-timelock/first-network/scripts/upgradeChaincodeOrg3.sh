@@ -13,13 +13,23 @@
 #
 
 echo
-echo "========= Finish adding Org3 to your first network ========= "
+echo "========= Upgrading chaincode on your first network ========= "
 echo
 CHANNEL_NAME="$1"
 DELAY="$2"
 LANGUAGE="$3"
 TIMEOUT="$4"
 VERBOSE="$5"
+VERSION="$6"
+echo "===================== VERSION ===================== "
+echo ${CHANNEL_NAME}
+echo ${DELAY}
+echo ${LANGUAGE}
+echo ${TIMEOUT}
+echo ${VERBOSE}
+echo ${VERSION}
+echo "===================== VERSION ===================== "
+
 : ${CHANNEL_NAME:="mychannel"}
 : ${DELAY:="3"}
 : ${LANGUAGE:="golang"}
@@ -37,23 +47,11 @@ fi
 # import utils
 . scripts/utils.sh
 
-echo "===================== Installing chaincode 2.0 on peer0.org1 ===================== "
-installChaincode 0 1 2.0
+echo "Installing chaincode ${VERSION} on peer0.org3..."
+installChaincode 0 3 ${VERSION}
 
-#echo "===================== Installing chaincode 2.0 on peer1.org1 ===================== "
-#installChaincode 1 1 2.0
-
-echo "===================== Installing chaincode 2.0 on peer0.org2 ===================== "
-installChaincode 0 2 2.0
-
-#echo "===================== Installing chaincode 2.0 on peer1.org2 ===================== "
-#installChaincode 1 2 2.0
-
-echo "===================== Upgrading chaincode on peer0.org1 ===================== "
-upgradeChaincode 0 1 2.0
+echo "Installing chaincode ${VERSION} on peer1.org3..."
+installChaincode 1 3 ${VERSION}
 
 echo
-echo "========= Finished adding Org3 to your first network! ========= "
-echo
-
 exit 0

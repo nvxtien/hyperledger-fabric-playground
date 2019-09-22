@@ -57,20 +57,20 @@ chaincodeInvoke 0 1 0 2 0 3
 echo "Querying chaincode on peer0.org3..."
 chaincodeQuery 0 3 80
 
-echo "Querying chaincode on peer1.org3..."
-chaincodeQuery 1 3 80
+#echo "Querying chaincode on peer1.org3..."
+#chaincodeQuery 1 3 80
 
-echo "Querying chaincode on peer0.org2..."
-chaincodeQuery 0 2 80
+#echo "Querying chaincode on peer0.org2..."
+#chaincodeQuery 0 2 80
 
-echo "Querying chaincode on peer1.org2..."
-chaincodeQuery 1 2 80
+#echo "Querying chaincode on peer1.org2..."
+#chaincodeQuery 1 2 80
 
-echo "Querying chaincode on peer0.org1..."
-chaincodeQuery 0 1 80
+#echo "Querying chaincode on peer0.org1..."
+#chaincodeQuery 0 1 80
 
-echo "Querying chaincode on peer1.org1..."
-chaincodeQuery 1 1 80
+#echo "Querying chaincode on peer1.org1..."
+#chaincodeQuery 1 1 80
 
 
 echo
