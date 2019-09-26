@@ -3,8 +3,30 @@
 ## Start TLS CA   
 
   1. Create a docker-compose file for the CA TLS
-  ```bash
+  ```
   docker-compose-ca-tls.yaml
+  
+  version: '2'
+  
+  #networks:
+  #  fabric-ca:
+  
+  services:
+    ca-tls:
+      container_name: ca-tls
+      image: hyperledger/fabric-ca:$IMAGE_TAG
+      command: sh -c 'fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminpw --port 7052'
+      environment:
+        - FABRIC_CA_SERVER_HOME=/tmp/hyperledger/fabric-ca/crypto
+        - FABRIC_CA_SERVER_CSR_CN=tls-ca
+        - FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0
+        - FABRIC_CA_SERVER_DEBUG=true
+      volumes:
+        - /tmp/hyperledger/tls-ca:/tmp/hyperledger/fabric-ca
+      networks:
+        - fabric-ca
+      ports:
+        - 7052:7052
   ```
   2. Using kompose to convert the file docker-compose-ca-tls.yaml to files that you can use with kubectl
   ```bash
