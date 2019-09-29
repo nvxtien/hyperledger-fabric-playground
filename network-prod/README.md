@@ -49,16 +49,11 @@
   export FABRIC_CA_CLIENT_HOME=$FABRIC_CFG_PATH/fabca/po1.fabric.com/tlsca-admin
   
   fabric-ca-client enroll -d -u https://tls-peer-admin:tls-peer-adminpw@0.0.0.0:7151
-  # 2019/09/27 20:53:56 [DEBUG] newEnrollmentResponse tls-peer-admin
-  #  2019/09/27 20:53:56 [INFO] Stored client certificate at $FABRIC_CFG_PATH/fabca/po1.fabric.com/tlsca-admin/msp/signcerts/cert.pem
-  #  2019/09/27 20:53:56 [INFO] Stored root CA certificate at $FABRIC_CFG_PATH/fabca/po1.fabric.com/tlsca-admin/msp/cacerts/0-0-0-0-7151.pem
-  
   fabric-ca-client register -d --id.name peer0.po1.fabric.com --id.secret peer0PW --id.type peer -u https://0.0.0.0:7151
-  
   fabric-ca-client register -d --id.name peer1.po1.fabric.com --id.secret peer0PW --id.type peer -u https://0.0.0.0:7151
-  
   fabric-ca-client register -d --id.name Admin@po1.fabric.com --id.secret po1AdminPW --id.type admin -u https://0.0.0.0:7151
   
+  # 222
   
   # ------------------------------------------------------------------------------------------------------
   # Setup orderer CA
@@ -86,6 +81,7 @@
   fabric-ca-client register -d --id.name orderer1.fabric.com --id.secret ordererpw --id.type orderer -u https://0.0.0.0:7152
   fabric-ca-client register -d --id.name Admin@fabric.com --id.secret ordereradminpw --id.type admin --id.attrs "hf.Registrar.Roles=client,hf.Registrar.Attributes=*,hf.Revoker=true,hf.GenCRL=true,admin=true:ecert,abac.init=true:ecert" -u https://0.0.0.0:7152
   
+  # 333
   
   # ------------------------------------------------------------------------------------------------------
   # Setup peer CA
