@@ -19,7 +19,7 @@ services:
 
   orderer1.fabric.com:
     extends:
-      file:   ./base/docker-compose-base.yaml
+      file:   base/docker-compose-base.yaml
       service: orderer1.fabric.com
     container_name: orderer1.fabric.com
     # networks:
@@ -28,7 +28,7 @@ services:
   peer0.po1.fabric.com:
     container_name: peer0.po1.fabric.com
     extends:
-      file:  ./base/docker-compose-base.yaml
+      file:  base/docker-compose-base.yaml
       service: peer0.po1.fabric.com
     # networks:
       # - fab-net
@@ -36,11 +36,11 @@ services:
   peer1.po1.fabric.com:
     container_name: peer1.po1.fabric.com
     extends:
-      file:  ./base/docker-compose-base.yaml
+      file:  base/docker-compose-base.yaml
       service: peer1.po1.fabric.com
     # networks:
       # - fab-net
-     
+
      
 
   cli:
@@ -68,7 +68,7 @@ services:
     volumes:
         - /var/run/:/host/var/run/
         - ./chaincode/:/opt/gopath/src/github.com/chaincode
-        - /tmp/hyperledger/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
         - ./scripts:/opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/
         - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:

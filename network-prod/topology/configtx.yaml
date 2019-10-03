@@ -10,30 +10,58 @@ Organizations:
 
     - &OrdererOrg
 
-       Name: OrdererOrg
+        Name: OrdererOrg
 
-       # ID to load the MSP definition as
-       ID: OrdererMSP
+        # ID to load the MSP definition as
+        ID: OrdererMSP
 
-       # MSPDir is the filesystem path which contains the MSP configuration
-       MSPDir: crypto-config/ordererOrganizations/fabric.com/msp
+        # MSPDir is the filesystem path which contains the MSP configuration
+        MSPDir: crypto-config/ordererOrganizations/fabric.com/msp
+
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Writers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Admins:
+                Type: Signature
+                Rule: "OR('OrdererMSP.admin')"
 
     - &po1
 
-       Name: po1MSP
+        Name: po1MSP
 
-       # ID to load the MSP definition as
-       ID: po1MSP
+        # ID to load the MSP definition as
+        ID: po1MSP
 
-       # MSPDir is the filesystem path which contains the MSP configuration
-       MSPDir: crypto-config/peerOrganizations/po1.fabric.com/msp
+        # MSPDir is the filesystem path which contains the MSP configuration
+        MSPDir: crypto-config/peerOrganizations/po1.fabric.com/msp
 
-       AnchorPeers:
-          # AnchorPeers defines the location of peers which can be used
-          # for cross org gossip communication.  Note, this value is only
-          # encoded in the genesis block in the Application section context
-          - Host: peer0.po1.fabric.com
-            Port: 7051
+        # Policies defines the set of policies at this level of the config tree
+        # For organization policies, their canonical path is usually
+        #   /Channel/<Application|Orderer>/<OrgName>/<PolicyName>
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('po1MSP.admin', 'po1MSP.peer', 'po1MSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('po1MSP.admin', 'po1MSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('po1MSP.admin')"
+
+        AnchorPeers:
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+            - Host: peer0.po1.fabric.com
+              Port: 7051
 ################################################################################
 #
 #   SECTION: Application
@@ -47,6 +75,20 @@ Application: &ApplicationDefaults
    # Organizations is the list of orgs which are defined as participants on
    # the application side of the network
    Organizations:
+
+   # Policies defines the set of policies at this level of the config tree
+   # For Application policies, their canonical path is
+   #   /Channel/Application/<PolicyName>
+   Policies:
+       Readers:
+         Type: ImplicitMeta
+         Rule: "ANY Readers"
+       Writers:
+         Type: ImplicitMeta
+         Rule: "ANY Writers"
+       Admins:
+         Type: ImplicitMeta
+         Rule: "MAJORITY Admins"
 
 
 ################################################################################
@@ -86,6 +128,58 @@ Orderer: &OrdererDefaults
     # Organizations is the list of orgs which are defined as participants on
     # the orderer side of the network
     Organizations:
+
+    # Policies defines the set of policies at this level of the config tree
+    # For Orderer policies, their canonical path is
+    #   /Channel/Orderer/<PolicyName>
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        # BlockValidation specifies what signatures must be included in the block
+        # from the orderer for the peer to validate it.
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+################################################################################
+#
+#   CHANNEL
+#
+#   This section defines the values to encode into a config transaction or
+#   genesis block for channel related parameters.
+#
+################################################################################
+Channel: &ChannelDefaults
+  # Policies defines the set of policies at this level of the config tree
+  # For Channel policies, their canonical path is
+  #   /Channel/<PolicyName>
+  Policies:
+    # Who may invoke the 'Deliver' API
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    # Who may invoke the 'Broadcast' API
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    # By default, who may modify elements at this config level
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  # Capabilities describes the channel level capabilities, see the
+  # dedicated Capabilities section elsewhere in this file for a full
+  # description
+#  Capabilities:
+#    <<: *ChannelCapabilities
+
+
 ################################################################################
 #
 #   Profile
@@ -97,6 +191,7 @@ Orderer: &OrdererDefaults
 Profiles:
 
     OneOrgsOrdererGenesis:
+        <<: *ChannelDefaults
         Orderer:
             <<: *OrdererDefaults
             Organizations:
@@ -108,6 +203,7 @@ Profiles:
 
     OneOrgsChannel:
         Consortium: RupeshConsortium
+        <<: *ChannelDefaults
         Application:
             <<: *ApplicationDefaults
             Organizations:

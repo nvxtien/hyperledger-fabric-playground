@@ -1,4 +1,5 @@
-version: '2'
+version: '3'
+
 
 networks:
   default:
@@ -9,6 +10,7 @@ services:
   tlsca.fabric.com:
     container_name: tlsca.fabric.com
     image: hyperledger/fabric-ca:$IMAGE_TAG
+#    command: sh -c 'fabric-ca-server init -b tls-ord-admin:tls-ord-adminpw'
     command: sh -c 'fabric-ca-server start -d -b tls-ord-admin:tls-ord-adminpw --port 7150 --cfg.identities.allowremove'
     environment:
       - FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric-ca
@@ -29,6 +31,7 @@ services:
   tlsca.po1.fabric.com:
     container_name: tlsca.po1.fabric.com
     image: hyperledger/fabric-ca:$IMAGE_TAG
+#    command: sh -c 'fabric-ca-server init -b tls-peer-admin:tls-peer-adminpw'
     command: sh -c 'fabric-ca-server start -d -b tls-peer-admin:tls-peer-adminpw --port 7151 --cfg.identities.allowremove'
     environment:
       - FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric-ca

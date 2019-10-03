@@ -10,6 +10,11 @@
 
 version: '2'
 
+#networks:
+#  default:
+#    external:
+#      name: fab-net
+
 services:
   peer-base:
     image: hyperledger/fabric-peer:$IMAGE_TAG
