@@ -14,6 +14,10 @@ export FABRIC_CFG_PATH=$PWD
 rm -rf $FABRIC_CFG_PATH/channel-artifacts/*
 rm -rf $FABRIC_CFG_PATH/logs/*
 
+mkdir -p $FABRIC_CFG_PATH/channel-artifacts/
+mkdir -p $FABRIC_CFG_PATH/logs/
+
+
 set +x
 echo " --------------------------------------------------------------------------------------------------------------- "
 ecgo " Create Peer config.yaml "
@@ -87,16 +91,16 @@ echo "
 NodeOUs:
   Enable: true
   ClientOUIdentifier:
-    Certificate: cacerts/0-0-0-0-7153.pem
+    Certificate: cacerts/0-0-0-0-7152.pem
     OrganizationalUnitIdentifier: client
   PeerOUIdentifier:
-    Certificate: cacerts/0-0-0-0-7153.pem
+    Certificate: cacerts/0-0-0-0-7152.pem
     OrganizationalUnitIdentifier: peer
   AdminOUIdentifier:
-    Certificate: cacerts/0-0-0-0-7153.pem
+    Certificate: cacerts/0-0-0-0-7152.pem
     OrganizationalUnitIdentifier: admin
   OrdererOUIdentifier:
-    Certificate: cacerts/0-0-0-0-7153.pem
+    Certificate: cacerts/0-0-0-0-7152.pem
     OrganizationalUnitIdentifier: orderer
 " > $FABRIC_CFG_PATH/crypto-config/ordererOrganizations/fabric.com/orderers/orderer1.fabric.com/msp/config.yaml
 
