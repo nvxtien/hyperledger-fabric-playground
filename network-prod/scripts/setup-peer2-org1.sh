@@ -45,7 +45,7 @@ echo " -------------------------------------------------------------------------
 echo " Go to path /tmp/hyperledger/org1/peer2/tls-msp/keystore  and change the name of the key to key.pem. This will make it easy to be able to refer to in later steps."
 
 set -x
-cp /tmp/hyperledger/org1/peer2/tls-msp/keystore /$(ls /tmp/hyperledger/org1/peer2/tls-msp/keystore) /tmp/hyperledger/org1/peer2/tls-msp/keystore/key.pem
+cp /tmp/hyperledger/org1/peer2/tls-msp/keystore/$(ls /tmp/hyperledger/org1/peer2/tls-msp/keystore) /tmp/hyperledger/org1/peer2/tls-msp/keystore/key.pem
 ls /tmp/hyperledger/org1/peer2/tls-msp/keystore
 set +x
 

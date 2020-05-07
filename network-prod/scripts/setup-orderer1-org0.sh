@@ -23,7 +23,7 @@ echo " - enable rca-org0 to be scp without password"
 
 set -x
 mkdir -p /tmp/hyperledger/org0/orderer/assets/ca
-scp -i aws.pem ubuntu@rca-org0:/tmp/hyperledger/fabric-ca/crypto/ca-cert.pem /tmp/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
+scp -i aws.pem root@rca-org0:/tmp/hyperledger/fabric-ca/crypto/ca-cert.pem /tmp/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
 export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/org0/orderer
 export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
 fabric-ca-client enroll -d -u https://orderer1-org0:ordererpw@rca-org0:7053
