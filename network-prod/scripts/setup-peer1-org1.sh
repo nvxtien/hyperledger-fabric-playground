@@ -23,7 +23,7 @@ echo " - enable rca-org1 to be scp without password"
 
 set -x
 mkdir -p /tmp/hyperledger/org1/peer1/assets/ca
-scp ubuntu@rca-org1:/tmp/hyperledger/fabric-ca/crypto/ca-cert.pem /tmp/hyperledger/org1/peer1/assets/ca/org1-ca-cert.pem
+scp root@rca-org1:/tmp/hyperledger/fabric-ca/crypto/ca-cert.pem /tmp/hyperledger/org1/peer1/assets/ca/org1-ca-cert.pem
 export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/org1/peer1
 export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/org1/peer1/assets/ca/org1-ca-cert.pem
 export FABRIC_CA_CLIENT_MSPDIR=msp
