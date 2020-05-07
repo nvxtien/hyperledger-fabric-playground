@@ -19,7 +19,7 @@ echo " -------------------------------------------------------------------------
 echo " Create CA service for Org0"
 echo " ------------------------------------------------------------------------------------------------------ "
 pwd
-cp ./fabric-samples/bin/fabric-samples/bin/* /usr/local/bin/
+cp $HOME/fabric-samples/bin/* /usr/local/bin/
 
 cat > rca-org0.service << EOF
 # Service definition for Hyperledger fabric-ca server
@@ -45,7 +45,7 @@ sudo cp rca-org0.service /etc/systemd/system/
 sudo systemctl enable rca-org0.service
 sudo systemctl start rca-org0.service
 sleep 5
-sudo systemctl status tls-ca.service
+sudo systemctl status rca-org0.service
 
 echo
 echo " _____   _   _   ____   "

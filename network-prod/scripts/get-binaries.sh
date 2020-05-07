@@ -15,7 +15,7 @@ echo " -------------------------------------------------------------------------
 echo " Get binaries "
 echo " ------------------------------------------------------------------------------------------------------ "
 curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.0.1 1.4.6 0.4.18
-cp ./fabric-samples/bin/fabric-samples/bin/* /usr/local/bin/
+cp $HOME/fabric-samples/bin/* /usr/local/bin/
 
 echo " ------------------------------------------------------------------------------------------------------ "
 echo " Create TLS CA service "
@@ -41,7 +41,7 @@ ExecStart=/usr/local/bin/fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminp
 WantedBy=multi-user.target
 EOF
 
-sudo cp tls-ca.service /etc/systemd/system/
+sudo cp $HOME/tls-ca.service /etc/systemd/system/
 sudo systemctl enable tls-ca.service
 sudo systemctl start tls-ca.service
 sleep 5
