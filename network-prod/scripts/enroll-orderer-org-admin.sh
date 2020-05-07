@@ -11,26 +11,23 @@ echo
 cd $HOME
 
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " Setup Org1's peer1"
+echo " Enroll Peer Org's CA Admin and Peer1 identity"
 echo " ------------------------------------------------------------------------------------------------------ "
 
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " This operation happening on peer1-org1"
+echo " This operation happening on orderer1-org0"
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " You must do configuration as the following before issuing this script"
-echo " - enable rca-org1 to be ssh with password"
-echo " - enable rca-org1 to be scp without password"
 
 set -x
 
-export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/org1/admin
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/org1/peer1/assets/ca/org1-ca-cert.pem
+export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/org0/admin
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/org0/orderer/assets/ca/org0-ca-cert.pem
 export FABRIC_CA_CLIENT_MSPDIR=msp
-fabric-ca-client enroll -d -u https://admin-org1:org1AdminPW@rca-org1:7054
+fabric-ca-client enroll -d -u https://orderer-org0-admin:ordererAdminPW@rca-org0:7053
 
-mkdir /tmp/hyperledger/org1/peer1/msp/admincerts
-cp /tmp/hyperledger/org1/admin/msp/signcerts/cert.pem /tmp/hyperledger/org1/peer1/msp/admincerts/org1-admin-cert.pem
-ls /tmp/hyperledger/org1/peer1/msp/admincerts
+mkdir -p /tmp/hyperledger/org0/orderer/msp/admincerts
+cp /tmp/hyperledger/org0/admin/msp/signcerts/cert.pem /tmp/hyperledger/org0/orderer/msp/admincerts/orderer-admin-cert.pem
+
 set +x
 
 echo

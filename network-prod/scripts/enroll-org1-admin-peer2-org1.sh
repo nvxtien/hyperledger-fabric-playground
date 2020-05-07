@@ -25,7 +25,7 @@ set -x
 
 mkdir -p /tmp/hyperledger/org1/peer2/msp/admincerts
 scp root@peer1-org1:/tmp/hyperledger/org1/admin/msp/signcerts/cert.pem /tmp/hyperledger/org1/peer2/msp/admincerts/org1-admin-cert.pem
-
+ls /tmp/hyperledger/org1/peer2/msp/admincerts
 set +x
 
 echo
