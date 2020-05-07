@@ -17,6 +17,7 @@ curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.0.1 1.4.6 0.4.18
 echo " ------------------------------------------------------------------------------------------------------ "
 echo " Create CA service for Org0"
 echo " ------------------------------------------------------------------------------------------------------ "
+cp ./fabric-samples/bin/fabric-samples/bin/* /usr/local/bin/
 
 cat > rca-org0.service << EOF
 # Service definition for Hyperledger fabric-ca server
