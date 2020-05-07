@@ -11,24 +11,23 @@ echo
 cd $HOME
 
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " Enroll Order Org's CA Admin "
+echo " Enroll Peer Org's CA Admin and Peer1 identity"
 echo " ------------------------------------------------------------------------------------------------------ "
 
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " This operation happening on orderer1-org0"
+echo " This operation happening on peer1-org1"
 echo " ------------------------------------------------------------------------------------------------------ "
 echo " You must do configuration as the following before issuing this script"
-echo " - enable rca-org0 to be ssh with password"
-echo " - enable rca-org0 to be scp without password"
+echo " - enable rca-org1 to be ssh with password"
+echo " - enable rca-org1 to be scp without password"
 
 set -x
-mkdir -p /tmp/hyperledger/org0/ca/crypto
-scp root@rca-org0:/tmp/hyperledger/fabric-ca/crypto/ca-cert.pem /tmp/hyperledger/org0/ca/crypto/ca-cert.pem
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/org0/ca/crypto/ca-cert.pem
-export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/org0/ca/admin
-fabric-ca-client enroll -d -u https://rca-org0-admin:rca-org0-adminpw@rca-org0:7053
-fabric-ca-client register -d --id.name orderer1-org0 --id.secret ordererpw --id.type orderer -u https://rca-org0:7053
-fabric-ca-client register -d --id.name admin-org0 --id.secret org0adminpw --id.type admin --id.attrs "hf.Registrar.Roles=client,hf.Registrar.Attributes=*,hf.Revoker=true,hf.GenCRL=true,admin=true:ecert,abac.init=true:ecert" -u https://rca-org0:7053
+mkdir -p /tmp/hyperledger/org1/ca/crypto
+scp root@rca-org1:/tmp/hyperledger/fabric-ca/crypto/ca-cert.pem /tmp/hyperledger/org1/ca/crypto/ca-cert.pem
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/org1/ca/crypto/ca-cert.pem
+export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/org1/ca/admin
+fabric-ca-client enroll -d -u https://rca-org1-admin:rca-org1-adminpw@rca-org1:7054
+fabric-ca-client register -d --id.name peer1-org1 --id.secret peer1PW --id.type peer -u https://rca-org1:7054
 set +x
 
 echo
