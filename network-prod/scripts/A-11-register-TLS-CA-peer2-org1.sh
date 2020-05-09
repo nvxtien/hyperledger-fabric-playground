@@ -11,15 +11,9 @@ echo
 cd $HOME
 
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " Get binaries "
+echo " register peer2-org1 with TLS CA"
 echo " ------------------------------------------------------------------------------------------------------ "
-#curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.0.1 1.4.6 0.4.18
 
-echo " ------------------------------------------------------------------------------------------------------ "
-echo " Enroll TLS CA Admin"
-echo " ------------------------------------------------------------------------------------------------------ "
-pwd
-cp $HOME/fabric-samples/bin/* /usr/local/bin/
 set -x
 mkdir -p /tmp/hyperledger/tls-ca/crypto
 sudo chown ${USER} -R /tmp/hyperledger

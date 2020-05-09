@@ -11,25 +11,24 @@ echo
 cd $HOME
 
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " Get binaries "
+echo " Enroll Peer Org's CA Admin and Peer1 identity"
 echo " ------------------------------------------------------------------------------------------------------ "
-#curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.0.1 1.4.6 0.4.18
 
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " Enroll TLS CA Admin"
+echo " This operation happening on peer2-org1"
 echo " ------------------------------------------------------------------------------------------------------ "
-pwd
-cp $HOME/fabric-samples/bin/* /usr/local/bin/
+echo " You must do configuration as the following before issuing this script"
+echo " - enable rca-org1 to be ssh with password"
+echo " - enable rca-org1 to be scp without password"
+
 set -x
-mkdir -p /tmp/hyperledger/tls-ca/crypto
-sudo chown ${USER} -R /tmp/hyperledger
-scp root@tls-ca:/tmp/hyperledger/fabric-ca/crypto/ca-cert.pem /tmp/hyperledger/tls-ca/crypto/tls-ca-cert.pem
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/tls-ca/crypto/tls-ca-cert.pem
-export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/tls-ca/admin
-fabric-ca-client enroll -d -u https://tls-ca-admin:tls-ca-adminpw@tls-ca:7052
-fabric-ca-client register -d --id.name peer1-org1 --id.secret peer1PW --id.type peer -u https://tls-ca:7052
+mkdir -p /tmp/hyperledger/org1/ca/crypto
+scp root@rca-org1:/tmp/hyperledger/fabric-ca/crypto/ca-cert.pem /tmp/hyperledger/org1/ca/crypto/ca-cert.pem
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/tmp/hyperledger/org1/ca/crypto/ca-cert.pem
+export FABRIC_CA_CLIENT_HOME=/tmp/hyperledger/org1/ca/admin
+fabric-ca-client enroll -d -u https://rca-org1-admin:rca-org1-adminpw@rca-org1:7054
+fabric-ca-client register -d --id.name peer2-org1 --id.secret peer2PW --id.type peer -u https://rca-org1:7054
 set +x
-#fabric-ca-client register -d --id.name peer2-org1 --id.secret peer2PW --id.type peer -u https://tls-ca:7052
 
 echo
 echo " _____   _   _   ____   "
