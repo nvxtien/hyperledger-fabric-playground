@@ -1,0 +1,12 @@
+- &org0
+  Name: org0
+  ID: org0MSP
+  MSPDir: /tmp/hyperledger/org0/msp
+
+- &org1
+  Name: org1
+  ID: org1MSP
+  MSPDir: /tmp/hyperledger/org1/msp
+  AnchorPeers:
+    - Host: peer1-org1
+        Port: 7051

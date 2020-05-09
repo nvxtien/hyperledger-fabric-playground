@@ -27,9 +27,9 @@ Environment=CORE_PEER_CHAINCODEADDRESS=peer1-org1:7052
 Environment=CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
 Environment=CORE_PEER_LOCALMSPID=org1MSP
 Environment=CORE_PEER_MSPCONFIGPATH=/tmp/hyperledger/org1/peer1/msp
-Environment=FABRIC_CFG_PATH=/tmp/hyperledger/config
 Environment=CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
 Environment=FABRIC_LOGGING_SPEC=debug
+Environment=FABRIC_CFG_PATH=/tmp/hyperledger/config
 Environment=CORE_PEER_TLS_ENABLED=true
 Environment=CORE_PEER_TLS_CERT_FILE=/tmp/hyperledger/org1/peer1/tls-msp/signcerts/cert.pem
 Environment=CORE_PEER_TLS_KEY_FILE=/tmp/hyperledger/org1/peer1/tls-msp/keystore/key.pem
