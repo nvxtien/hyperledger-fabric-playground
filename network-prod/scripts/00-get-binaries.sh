@@ -14,7 +14,8 @@ echo " Get binaries "
 echo " ------------------------------------------------------------------------------------------------------ "
 set -x
 curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.0.1 1.4.6 0.4.18
-cp $HOME/fabric-samples/bin/* /usr/local/bin/
+cp ./fabric-samples/bin/* /usr/local/bin/
+rm -rf ./fabric-samples
 set +x
 
 echo
