@@ -20,6 +20,7 @@ After=network-online.target
 [Service]
 Type=forking
 Restart=on-failure
+Environment=FABRIC_CFG_PATH=/tmp/hyperledger/config
 Environment=ORDERER_HOME=/tmp/hyperledger/orderer
 Environment=ORDERER_HOST=orderer1-org0
 Environment=ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
@@ -33,16 +34,16 @@ Environment=ORDERER_GENERAL_TLS_PRIVATEKEY=/tmp/hyperledger/org0/orderer/tls-msp
 Environment=ORDERER_GENERAL_TLS_ROOTCAS=[/tmp/hyperledger/org0/orderer/tls-msp/tlscacerts/tls-tls-ca-7052.pem]
 Environment=ORDERER_GENERAL_LOGLEVEL=debug
 Environment=ORDERER_DEBUG_BROADCASTTRACEDIR=data/logs
-ExecStart=/usr/local/bin/order
+ExecStart=/usr/local/bin/orderer
 [Install]
 WantedBy=multi-user.target
 EOF
 
-sudo cp peer1-org1.service /etc/systemd/system/
-sudo systemctl enable peer1-org1.service
-sudo systemctl start peer1-org1.service
+sudo cp orderer1-org0.service /etc/systemd/system/
+sudo systemctl enable orderer1-org0.service
+sudo systemctl start orderer1-org0.service
 sleep 15
-sudo systemctl status peer1-org1.service
+sudo systemctl status orderer1-org0.service
 
 set +x
 

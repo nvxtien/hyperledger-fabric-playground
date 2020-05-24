@@ -29,6 +29,7 @@ ssh root@peer2-org1 "ssh-copy-id -i /root/.ssh/id_rsa.pub root@peer1-org1"
 #ssh root@orderer1-org0 "ssh-keygen -t rsa"
 ssh root@orderer1-org0 "ssh-copy-id -i /root/.ssh/id_rsa.pub root@tls-ca"
 ssh root@orderer1-org0 "ssh-copy-id -i /root/.ssh/id_rsa.pub root@rca-org0"
+#ssh root@orderer1-org0 "ssh-copy-id -i /root/.ssh/id_rsa.pub root@rca-org1"
 
 ssh root@orderer1-org0 "ssh-copy-id -i /root/.ssh/id_rsa.pub root@peer1-org1"
 

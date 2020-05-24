@@ -34,7 +34,7 @@ ls /tmp/hyperledger/org1/peer1/msp/admincerts
 
 echo " These operations are happening on peer2-org1 "
 ssh root@peer2-org1 "mkdir -p /tmp/hyperledger/org1/peer2/msp/admincerts"
-scp /tmp/hyperledger/org1/admin/msp/signcerts/cert.pem root@peer1-org1:/tmp/hyperledger/org1/peer2/msp/admincerts/org1-admin-cert.pem
+scp /tmp/hyperledger/org1/admin/msp/signcerts/cert.pem root@peer2-org1:/tmp/hyperledger/org1/peer2/msp/admincerts/org1-admin-cert.pem
 ssh root@peer2-org1 "ls /tmp/hyperledger/org1/peer2/msp/admincerts"
 
 set +x
