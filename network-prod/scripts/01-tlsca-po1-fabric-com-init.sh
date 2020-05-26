@@ -44,6 +44,11 @@ sudo systemctl start tls-ca-init.service
 sleep 5
 sudo systemctl status tls-ca-init.service
 
+set -x
+cp /etc/hyperledger/fabric-ca/msp/keystore/*_sk /etc/hyperledger/fabric-ca/tlsca
+mkdir -p /etc/hyperledger/{ca-admin,tlsca-admin,tlsca-server}
+set +x
+
 echo
 echo " _____   _   _   ____   "
 echo "| ____| | \ | | |  _ \  "
