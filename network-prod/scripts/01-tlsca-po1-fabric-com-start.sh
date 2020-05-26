@@ -33,7 +33,7 @@ Environment=FABRIC_CA_SERVER_CSR_HOSTS=tlsca.po1.fabric.com
 Environment=FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca/tlsca/tlsca.po1.fabric.com-key.pem
 Environment=FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca/tlsca/tlsca.po1.fabric.com-cert.pem
 Environment=FABRIC_CA_SERVER_DEBUG=true
-ExecStart=/usr/local/bin/fabric-ca-server start -d -b tls-ord-admin:tls-ord-adminpw --port 7151 --cfg.identities.allowremove
+ExecStart=/usr/local/bin/fabric-ca-server start -d -b tls-peer-admin:tls-peer-adminpw --port 7151 --cfg.identities.allowremove
 [Install]
 WantedBy=multi-user.target
 EOF
