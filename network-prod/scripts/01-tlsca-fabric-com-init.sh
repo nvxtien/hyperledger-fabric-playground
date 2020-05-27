@@ -38,15 +38,15 @@ ExecStart=/usr/local/bin/fabric-ca-server init -d -b tls-ord-admin:tls-ord-admin
 WantedBy=multi-user.target
 EOF
 
-sudo cp $HOME/tls-ca-init.service /etc/systemd/system/
+sudo cp ./tls-ca-init.service /etc/systemd/system/
 sudo systemctl enable tls-ca-init.service
 sudo systemctl start tls-ca-init.service
 sleep 5
 sudo systemctl status tls-ca-init.service
 
 set -x
-cp /etc/hyperledger/fabric-ca/msp/keystore/*_sk /etc/hyperledger/fabric-ca/tlsca
-mkdir -p /etc/hyperledger/{ca-admin,tlsca-admin,tlsca-server}
+#cp /etc/hyperledger/fabric-ca/msp/keystore/*_sk /etc/hyperledger/fabric-ca/tlsca
+#mkdir -p /etc/hyperledger/{ca-admin,tlsca-admin,tlsca-server}
 set +x
 
 echo

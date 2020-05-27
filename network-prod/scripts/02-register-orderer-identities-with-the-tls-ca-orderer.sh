@@ -20,8 +20,11 @@ export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/fabric-ca/tlsca/tlsca.fab
 export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/tlsca-admin
 
 fabric-ca-client enroll -d -u https://tls-ord-admin:tls-ord-adminpw@tlsca.fabric.com:7150
+sleep 2
 fabric-ca-client register -d --id.name orderer1.fabric.com --id.secret ordererPW --id.type orderer -u https://tlsca.fabric.com:7150
+sleep 2
 fabric-ca-client register -d --id.name admin@fabric.com --id.secret ordereradminpw --id.type admin -u https://tlsca.fabric.com:7150
+sleep 2
 set +x
 
 echo

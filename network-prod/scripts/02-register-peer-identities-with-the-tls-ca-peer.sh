@@ -20,8 +20,11 @@ export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/fabric-ca/tlsca/tlsca.po1
 export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/tlsca-admin
 
 fabric-ca-client enroll -d -u https://tls-peer-admin:tls-peer-adminpw@tlsca.po1.fabric.com:7151
+sleep 2
 fabric-ca-client register -d --id.name peer0.po1.fabric.com --id.secret peer0PW --id.type peer -u https://tlsca.po1.fabric.com:7151
+sleep 2
 fabric-ca-client register -d --id.name peer1.po1.fabric.com --id.secret peer0PW --id.type peer -u https://tlsca.po1.fabric.com:7151
+sleep 2
 fabric-ca-client register -d --id.name admin@po1.fabric.com --id.secret po1AdminPW --id.type admin -u https://tlsca.po1.fabric.com:7151
 sleep 2
 
