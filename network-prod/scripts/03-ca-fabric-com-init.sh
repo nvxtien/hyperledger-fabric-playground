@@ -38,7 +38,7 @@ ExecStart=/usr/local/bin/fabric-ca-server init -d -b rca-orderer-admin:rca-order
 WantedBy=multi-user.target
 EOF
 
-sudo $HOME/ca-init.service /etc/systemd/system/
+sudo cp $HOME/ca-init.service /etc/systemd/system/
 sudo systemctl enable ca-init.service
 sudo systemctl start ca-init.service
 sleep 5
