@@ -33,7 +33,7 @@ Environment=FABRIC_CA_SERVER_CSR_HOSTS=ca.fabric.com
 Environment=FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca/ca/ca.fabric.com-key.pem
 Environment=FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca/ca/ca.fabric.com-cert.pem
 Environment=FABRIC_CA_SERVER_DEBUG=true
-ExecStart=/usr/local/bin/fabric-ca-server init -d -b rca-orderer-admin:rca-orderer-adminpw --port 7152 --cfg.identities.allowremove
+ExecStart=/usr/local/bin/fabric-ca-server start -d -b rca-orderer-admin:rca-orderer-adminpw --port 7152 --cfg.identities.allowremove
 [Install]
 WantedBy=multi-user.target
 EOF
