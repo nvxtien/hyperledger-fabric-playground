@@ -24,14 +24,11 @@ set -x
 # scp /etc/hyperledger/fabric-ca/tls-cert.pem root@peer0.po1.fabric.com/etc/hyperledger/po1.fabric.com/tlsca/
 # scp /etc/hyperledger/fabric-ca/tls-cert.pem root@peer1.po1.fabric.com/etc/hyperledger/po1.fabric.com/tlsca/
 
-export FABRIC_CA_CLIENT_TLS_CERTFILES=$FABRIC_CFG_PATH/crypto-config/peerOrganizations/po1.fabric.com/tlsca/tlsca.po1.fabric.com-cert.pem
-export FABRIC_CA_CLIENT_HOME=$FABRIC_CFG_PATH/fabca/po1.fabric.com/tlsca-admin
-export FABRIC_CA_CLIENT_MSPDIR=$FABRIC_CFG_PATH/crypto-config/peerOrganizations/po1.fabric.com/peers/peer0.po1.fabric.com/tls
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/po1.fabric.com/tlsca/tlsca.po1.fabric.com-cert.pem
+export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/po1.fabric.com/tlsca-admin
+export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/po1.fabric.com/peers/peer0.po1.fabric.com/tls
 
-fabric-ca-client enroll -d -u https://peer0.po1.fabric.com:peer0PW@0.0.0.0:7151 --enrollment.profile tls --csr.hosts peer0.po1.fabric.com
-
-export FABRIC_CA_CLIENT_MSPDIR=$FABRIC_CFG_PATH/crypto-config/peerOrganizations/po1.fabric.com/peers/peer1.po1.fabric.com/tls
-fabric-ca-client enroll -d -u https://peer1.po1.fabric.com:peer0PW@0.0.0.0:7151 --enrollment.profile tls --csr.hosts peer1.po1.fabric.com
+fabric-ca-client enroll -d -u https://peer0.po1.fabric.com:peer0PW@tlsca.po1.fabric.com:7151 --enrollment.profile tls --csr.hosts peer0.po1.fabric.com
 
 set +x
 
