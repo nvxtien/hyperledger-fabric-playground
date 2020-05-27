@@ -38,7 +38,7 @@ ExecStart=/usr/local/bin/fabric-ca-server init -d -b tls-peer-admin:tls-peer-adm
 WantedBy=multi-user.target
 EOF
 
-sudo cp ./tls-ca-init.service /etc/systemd/system/
+sudo cp $HOME/tls-ca-init.service /etc/systemd/system/
 sudo systemctl enable tls-ca-init.service
 sudo systemctl start tls-ca-init.service
 sleep 5
