@@ -19,8 +19,8 @@ echo " -------------------------------------------------------------------------
 
 set -x
 
-scp /etc/hyperledger/fabric-ca/tls-cert.pem root@peer0.po1.fabric.com/etc/hyperledger/po1.fabric.com/tlsca/
-scp /etc/hyperledger/fabric-ca/tls-cert.pem root@peer1.po1.fabric.com/etc/hyperledger/po1.fabric.com/tlsca/
+scp /etc/hyperledger/fabric-ca/tls-cert.pem root@peer0.po1.fabric.com:/etc/hyperledger/po1.fabric.com/tlsca/
+scp /etc/hyperledger/fabric-ca/tls-cert.pem root@peer1.po1.fabric.com:/etc/hyperledger/po1.fabric.com/tlsca/
 
 set +x
 
