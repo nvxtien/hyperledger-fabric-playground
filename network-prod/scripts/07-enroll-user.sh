@@ -19,14 +19,12 @@ echo "Fabric does this by Creating folder user/Admin@po1.fabric.com"
 echo "------------------------------------------------------------------------------------------------------"
 
 set -x
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/po1.fabric.com/ca/ca.po1.fabric.com-cert.pem
-export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/po1.fabric.com/ca-admin
-export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/po1.fabric.com/users/admin@po1.fabric.com/msp
-fabric-ca-client enroll -d -u https://admin@po1.fabric.com:po1AdminPW@ca.po1.fabric.com:7153
+#export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/po1.fabric.com/ca/ca.po1.fabric.com-cert.pem
+#export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/po1.fabric.com/ca-admin
+#export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/po1.fabric.com/users/admin@po1.fabric.com/msp
 
-# AdminCerts
-fabric-ca-client identity list
-fabric-ca-client certificate list --id admin@po1.fabric.com --store /etc/hyperledger/po1.fabric.com/users/admin@po1.fabric.com/msp/admincerts
+export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/po1.fabric.com/users/user1@po1.fabric.com/msp
+fabric-ca-client enroll -d -u https://user1@po1.fabric.com:po1UserPW@ca.po1.fabric.com:7153
 
 set +x
 
