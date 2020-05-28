@@ -22,9 +22,9 @@ Type=forking
 Restart=on-failure
 Environment=CORE_PEER_ID=peer0.po1.fabric.com
 Environment=CORE_PEER_ADDRESS=peer0.po1.fabric.com:7051
-Environment=CORE_PEER_LISTENADDRESS=peer0.po1.fabric.com:7051
+Environment=CORE_PEER_LISTENADDRESS=0.0.0.0:7051
 Environment=CORE_PEER_CHAINCODEADDRESS=peer0.po1.fabric.com:7052
-Environment=CORE_PEER_CHAINCODELISTENADDRESS=peer0.po1.fabric.com:7052
+Environment=CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
 Environment=CORE_PEER_LOCALMSPID=po1MSP
 #Environment=CORE_PEER_PROFILE_ENABLED=true
 Environment=CORE_PEER_TLS_ENABLED=true
@@ -35,7 +35,7 @@ Environment=CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/po1.fabric.com/peers/peer0.
 Environment=FABRIC_CFG_PATH=/etc/hyperledger/config
 Environment=CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
 Environment=FABRIC_LOGGING_SPEC=debug
-Environment=CORE_PEER_GOSSIP_BOOTSTRAP=peer1.po1.fabric.com:7053
+#Environment=CORE_PEER_GOSSIP_BOOTSTRAP=peer1.po1.fabric.com:7053
 Environment=CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.po1.fabric.com:7051
 Environment=CORE_PEER_GOSSIP_USELEADERELECTION=true
 Environment=CORE_PEER_GOSSIP_ORGLEADER=false
@@ -48,8 +48,8 @@ EOF
 sudo cp peer0-po1.service /etc/systemd/system/
 sudo systemctl enable peer0-po1.service
 sudo systemctl start peer0-po1.service
-sleep 15
-sudo systemctl status peer0-po1.service
+#sleep 15
+#sudo systemctl status peer0-po1.service
 
 set +x
 

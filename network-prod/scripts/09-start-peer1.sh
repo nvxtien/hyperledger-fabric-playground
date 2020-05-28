@@ -22,9 +22,9 @@ Type=forking
 Restart=on-failure
 Environment=CORE_PEER_ID=peer1.po1.fabric.com
 Environment=CORE_PEER_ADDRESS=peer1.po1.fabric.com:7053
-Environment=CORE_PEER_LISTENADDRESS=peer1.po1.fabric.com:7053
+Environment=CORE_PEER_LISTENADDRESS=0.0.0.0:7053
 Environment=CORE_PEER_CHAINCODEADDRESS=peer1.po1.fabric.com:7054
-Environment=CORE_PEER_CHAINCODELISTENADDRESS=peer1.po1.fabric.com:7054
+Environment=CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7054
 Environment=CORE_PEER_LOCALMSPID=po1MSP
 #Environment=CORE_PEER_PROFILE_ENABLED=true
 Environment=CORE_PEER_TLS_ENABLED=true
@@ -48,8 +48,8 @@ EOF
 sudo cp peer1-po1.service /etc/systemd/system/
 sudo systemctl enable peer1-po1.service
 sudo systemctl start peer1-po1.service
-sleep 15
-sudo systemctl status peer1-po1.service
+#sleep 15
+#sudo systemctl status peer1-po1.service
 
 set +x
 
