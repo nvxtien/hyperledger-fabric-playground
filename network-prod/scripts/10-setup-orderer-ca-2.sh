@@ -35,7 +35,10 @@ fabric-ca-client identity list
 fabric-ca-client certificate list --id admin@fabric.com --store /etc/hyperledger/users/admin@fabric.com/msp/admincerts
 
 # Copy AdminCerts to Orderer MSP AdminCerts
-cp /etc/hyperledger/users/admin@fabric.com/msp/admincerts/*.pem /etc/hyperledger/orderers/orderer1.fabric.com/msp/admincerts
+mkdir /etc/hyperledger/orderers/orderer1.fabric.com/msp/admincerts
+cp /etc/hyperledger/users/admin@fabric.com/msp/admincerts/*.pem /etc/hyperledger/orderers/orderer1.fabric.com/msp/admincerts/
+
+cp /etc/hyperledger/users/admin@fabric.com/msp/keystore/*_sk /etc/hyperledger/users/admin@fabric.com/msp/keystore/key.pem
 
 tree /etc/hyperledger
 
