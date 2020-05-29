@@ -15,7 +15,7 @@ Organizations:
     ID: org0MSP
 
     # MSPDir is the filesystem path which contains the MSP configuration
-    MSPDir: /tmp/hyperledger/org0/msp
+    MSPDir: /etc/hyperledger/orderer/msp
 
     # Policies defines the set of policies at this level of the config tree
     # For organization policies, their canonical path is usually
@@ -39,7 +39,7 @@ Organizations:
     ID: org1MSP
 
     # MSPDir is the filesystem path which contains the MSP configuration
-    MSPDir: /tmp/hyperledger/org1/msp
+    MSPDir: /etc/hyperledger/po1.fabric.com/msp
 
     # Policies defines the set of policies at this level of the config tree
     # For organization policies, their canonical path is usually
@@ -62,8 +62,8 @@ Organizations:
       # AnchorPeers defines the location of peers which can be used
       # for cross org gossip communication.  Note, this value is only
       # encoded in the genesis block in the Application section context
-      - Host: peer1-org1
-        Port: 7051
+      - Host: peer1.po1.fabric.com
+        Port: 7053
 
 
 ################################################################################
@@ -116,12 +116,12 @@ Orderer: &OrdererDefaults
 
   EtcdRaft:
     Consenters:
-      - Host: orderer1-org0
+      - Host: orderer1.po1.fabric.com
         Port: 7050
-        ClientTLSCert: /tmp/hyperledger/org0/orderer/tls-msp/signcerts/cert.pem
-        ServerTLSCert: /tmp/hyperledger/org0/orderer/tls-msp/signcerts/cert.pem
+        ClientTLSCert: /etc/hyperledger/orderer/tls-msp/signcerts/cert.pem
+        ServerTLSCert: /etc/hyperledger/orderer/tls-msp/signcerts/cert.pem
   Addresses:
-    - orderer1-org0:7050
+    - orderer1.po1.fabric.com:7050
 
   # Batch Timeout: The amount of time to wait before creating a batch
   BatchTimeout: 2s
