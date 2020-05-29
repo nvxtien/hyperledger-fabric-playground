@@ -21,12 +21,14 @@ fabric-ca-client enroll -d -u https://orderer1.fabric.com:ordererPW@tlsca.fabric
 sleep 2
 tree /etc/hyperledger
 
-export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/users/Admin@fabric.com/tls
-fabric-ca-client enroll -d -u https://Admin@fabric.com:ordereradminpw@tlsca.fabric.com:7150 --enrollment.profile tls --csr.hosts orderer1.fabric.com
+export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/users/admin@fabric.com/tls
+fabric-ca-client enroll -d -u https://admin@fabric.com:ordereradminpw@tlsca.fabric.com:7150 --enrollment.profile tls --csr.hosts orderer1.fabric.com
 sleep 2
 tree /etc/hyperledger
 
 # rename keystore -sk= key.pem
+#mkdir /etc/hyperledger/orderers/orderer1.fabric.com/msp/admincerts
+cp /etc/hyperledger/users/admin@fabric.com/tls/keystore/*_sk /etc/hyperledger/users/admin@fabric.com/tls/keystore/key.pem
 
 set +x
 
