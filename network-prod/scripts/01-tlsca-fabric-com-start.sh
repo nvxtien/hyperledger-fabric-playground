@@ -15,7 +15,7 @@ echo " -------------------------------------------------------------------------
 echo " Create TLS CA service "
 echo " ------------------------------------------------------------------------------------------------------ "
 
-cat > tls-ca.service << EOF
+cat > tlsca-start.service << EOF
 # Service definition for Hyperledger fabric-ca server
 [Unit]
 Description=hyperledger fabric-ca server - Certificate Authority for hyperledger fabric
@@ -38,9 +38,9 @@ ExecStart=/usr/local/bin/fabric-ca-server start -d -b tls-ord-admin:tls-ord-admi
 WantedBy=multi-user.target
 EOF
 
-sudo cp $HOME/tls-ca.service /etc/systemd/system/
-sudo systemctl enable tls-ca.service
-sudo systemctl start tls-ca.service
+sudo cp $HOME/tlsca-start.service /etc/systemd/system/
+sudo systemctl enable tlsca-start.service
+sudo systemctl start tlsca-start.service
 sleep 5
 sudo systemctl status tls-ca.service
 
