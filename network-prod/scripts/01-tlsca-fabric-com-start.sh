@@ -30,8 +30,8 @@ Environment=FABRIC_CA_SERVER_TLS_ENABLED=true
 Environment=FABRIC_CA_SERVER_CA_NAME=tlsca.fabric.com
 Environment=FABRIC_CA_SERVER_CSR_CN=tlsca.fabric.com
 Environment=FABRIC_CA_SERVER_CSR_HOSTS=tlsca.fabric.com
-Environment=FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca/tlsca/tlsca.fabric.com-key.pem
-Environment=FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca/tlsca/tlsca.fabric.com-cert.pem
+Environment=FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric.com/tlsca-server/tlsca.fabric.com-key.pem
+Environment=FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric.com/tlsca-server/tlsca.fabric.com-cert.pem
 Environment=FABRIC_CA_SERVER_DEBUG=true
 ExecStart=/usr/local/bin/fabric-ca-server start -d -b tls-ord-admin:tls-ord-adminpw --port 7150 --cfg.identities.allowremove
 [Install]
