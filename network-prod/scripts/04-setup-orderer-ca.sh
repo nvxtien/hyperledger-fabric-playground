@@ -12,12 +12,12 @@ echo
 cd $HOME
 
 echo " ------------------------------------------------------------------------------------------------------ "
-echo " Setup orderer CA "
+echo " Setup orderer CA on ca.fabric.com"
 echo " ------------------------------------------------------------------------------------------------------ "
 
 set -x
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/fabric-ca/ca/ca.fabric.com-cert.pem
-export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/ca-admin
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/fabric.com/ca-server/ca/ca.fabric.com-cert.pem
+export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/fabric.com/ca-admin
 
 fabric-ca-client enroll -d -u https://rca-orderer-admin:rca-orderer-adminpw@ca.fabric.com:7152
 fabric-ca-client register -d --id.name orderer1.fabric.com --id.secret ordererpw --id.type orderer -u https://ca.fabric.com:7152
