@@ -29,7 +29,10 @@ Environment=ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
 Environment=ORDERER_GENERAL_GENESISMETHOD=file
 Environment=ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/orderer/genesis.block
 Environment=ORDERER_GENERAL_LOCALMSPID=org0MSP
-Environment=ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/fabric.com/msp
+#Environment=ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/fabric.com/msp
+
+Environment=ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/orderers/orderer1.fabric.com/msp
+
 Environment=ORDERER_GENERAL_TLS_ENABLED=true
 Environment=ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/orderers/orderer1.fabric.com/tls/signcerts/cert.pem
 Environment=ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/orderers/orderer1.fabric.com/tls/keystore/key.pem
