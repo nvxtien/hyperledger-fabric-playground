@@ -35,11 +35,13 @@ Environment=CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/po1.fabric.com/peers/peer1.
 Environment=FABRIC_CFG_PATH=/etc/hyperledger/config
 Environment=CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
 Environment=FABRIC_LOGGING_SPEC=debug
-Environment=CORE_PEER_GOSSIP_BOOTSTRAP=peer1.po1.fabric.com:7053
-Environment=CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.po1.fabric.com:7053
+
 Environment=CORE_PEER_GOSSIP_USELEADERELECTION=true
 Environment=CORE_PEER_GOSSIP_ORGLEADER=false
-#Environment=CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+Environment=CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.po1.fabric.com:7053
+Environment=CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+Environment=CORE_PEER_GOSSIP_BOOTSTRAP=peer0.po1.fabric.com:7051
+
 ExecStart=/usr/local/bin/peer node start
 [Install]
 WantedBy=multi-user.target
