@@ -16,8 +16,8 @@ echo " Create TLS CA service "
 echo " ------------------------------------------------------------------------------------------------------ "
 
 set -x
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/fabric-ca/tlsca/tlsca.fabric.com-cert.pem
-export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/tlsca-admin
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/fabric.com/tlsca-server/tlsca/tlsca.fabric.com-cert.pem
+export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/fabric.com/tlsca-admin
 
 fabric-ca-client enroll -d -u https://tls-ord-admin:tls-ord-adminpw@tlsca.fabric.com:7150
 sleep 2
