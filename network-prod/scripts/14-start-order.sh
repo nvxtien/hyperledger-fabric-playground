@@ -22,7 +22,7 @@ Type=forking
 Restart=on-failure
 Environment=FABRIC_CFG_PATH=/etc/hyperledger/config
 
-#Environment=ORDERER_HOME=/tmp/hyperledger/orderer
+Environment=ORDERER_HOME=/etc/hyperledger/orderer
 
 Environment=ORDERER_HOST=orderer1.fabric.com
 Environment=ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
