@@ -25,13 +25,13 @@ After=network-online.target
 [Service]
 Type=simple
 Restart=on-failure
-Environment=FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric-ca
+Environment=FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric.com/ca-server
 Environment=FABRIC_CA_SERVER_TLS_ENABLED=true
 Environment=FABRIC_CA_SERVER_CA_NAME=ca.fabric.com
 Environment=FABRIC_CA_SERVER_CSR_CN=ca.fabric.com
 Environment=FABRIC_CA_SERVER_CSR_HOSTS=ca.fabric.com
-Environment=FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca/ca/ca.fabric.com-key.pem
-Environment=FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca/ca/ca.fabric.com-cert.pem
+Environment=FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric.com/ca-server/ca/ca.fabric.com-key.pem
+Environment=FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric.com/ca-server/ca/ca.fabric.com-cert.pem
 Environment=FABRIC_CA_SERVER_DEBUG=true
 ExecStart=/usr/local/bin/fabric-ca-server init -d -b rca-orderer-admin:rca-orderer-adminpw --port 7152 --cfg.identities.allowremove
 [Install]
