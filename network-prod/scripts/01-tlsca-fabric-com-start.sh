@@ -25,7 +25,7 @@ After=network-online.target
 [Service]
 Type=simple
 Restart=on-failure
-Environment=FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric-ca
+Environment=FABRIC_CA_SERVER_HOME=/etc/hyperledger/tlsca-server
 Environment=FABRIC_CA_SERVER_TLS_ENABLED=true
 Environment=FABRIC_CA_SERVER_CA_NAME=tlsca.fabric.com
 Environment=FABRIC_CA_SERVER_CSR_CN=tlsca.fabric.com
