@@ -15,7 +15,7 @@ echo " -------------------------------------------------------------------------
 echo " Create CA service "
 echo " ------------------------------------------------------------------------------------------------------ "
 
-cat > ca-init.service << EOF
+cat > ca-start.service << EOF
 # Service definition for Hyperledger fabric-ca server
 [Unit]
 Description=hyperledger fabric-ca server - Certificate Authority for hyperledger fabric
@@ -38,11 +38,11 @@ ExecStart=/usr/local/bin/fabric-ca-server start -d -b rca-orderer-admin:rca-orde
 WantedBy=multi-user.target
 EOF
 
-sudo cp $HOME/ca-init.service /etc/systemd/system/
-sudo systemctl enable ca-init.service
-sudo systemctl start ca-init.service
+sudo cp $HOME/ca-start.service /etc/systemd/system/
+sudo systemctl enable ca-start.service
+sudo systemctl start ca-start.service
 sleep 5
-sudo systemctl status ca-init.service
+sudo systemctl status ca-start.service
 
 set -x
 #cp /etc/hyperledger/fabric-ca/msp/keystore/*_sk /etc/hyperledger/fabric-ca/tlsca
