@@ -23,6 +23,7 @@ set -x
 
 # scp /etc/hyperledger/fabric-ca/tls-cert.pem root@peer0.po1.fabric.com/etc/hyperledger/po1.fabric.com/tlsca/
 # scp /etc/hyperledger/fabric-ca/tls-cert.pem root@peer1.po1.fabric.com/etc/hyperledger/po1.fabric.com/tlsca/
+scp root@tlsca.po1.fabric.com:/etc/hyperledger/po1.fabric.com/tlsca-server/tlsca/tlsca.po1.fabric.com-cert.pem /etc/hyperledger/po1.fabric.com/tlsca/
 
 export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/po1.fabric.com/tlsca/tlsca.po1.fabric.com-cert.pem
 export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/po1.fabric.com/tlsca-admin

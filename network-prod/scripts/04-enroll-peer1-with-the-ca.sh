@@ -16,6 +16,9 @@ echo " Setup peer CA "
 echo " ------------------------------------------------------------------------------------------------------ "
 
 set -x
+
+scp root@ca.po1.fabric.com:/etc/hyperledger/po1.fabric.com/ca-server/ca/ca.po1.fabric.com-cert.pem /etc/hyperledger/po1.fabric.com/ca/
+
 export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/po1.fabric.com/ca/ca.po1.fabric.com-cert.pem
 export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/po1.fabric.com/ca-admin
 

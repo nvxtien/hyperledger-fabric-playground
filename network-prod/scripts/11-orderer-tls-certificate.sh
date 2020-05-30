@@ -14,21 +14,25 @@ echo "# Orderer TLS certificate."
 echo "# ------------------------------------------------------------------------------------------------------------------------"
 set -x
 
-export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/fabric-ca/tlsca/tlsca.fabric.com-cert.pem
-export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/tlsca-admin
+scp
+
+scp root@tlsca.fabric.com:/etc/hyperledger/fabric.com/tlsca-server/tlsca/tlsca.fabric.com-cert.pem /etc/hyperledger/orderers/tlsca/
+
+export FABRIC_CA_CLIENT_TLS_CERTFILES=/etc/hyperledger/orderers/tlsca/tlsca.fabric.com-cert.pem
+export FABRIC_CA_CLIENT_HOME=/etc/hyperledger/orderers/tlsca-admin
 export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/orderers/orderer1.fabric.com/tls
 fabric-ca-client enroll -d -u https://orderer1.fabric.com:ordererPW@tlsca.fabric.com:7150 --enrollment.profile tls --csr.hosts orderer1.fabric.com
 sleep 2
 tree /etc/hyperledger
 
-export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/users/admin@fabric.com/tls
+export FABRIC_CA_CLIENT_MSPDIR=/etc/hyperledger/orderers/users/admin@fabric.com/tls
 fabric-ca-client enroll -d -u https://admin@fabric.com:ordereradminpw@tlsca.fabric.com:7150 --enrollment.profile tls --csr.hosts orderer1.fabric.com
 sleep 2
 tree /etc/hyperledger
 
 # rename keystore -sk= key.pem
 #mkdir /etc/hyperledger/orderers/orderer1.fabric.com/msp/admincerts
-cp /etc/hyperledger/users/admin@fabric.com/tls/keystore/*_sk /etc/hyperledger/users/admin@fabric.com/tls/keystore/key.pem
+cp /etc/hyperledger/orderers/users/admin@fabric.com/tls/keystore/*_sk /etc/hyperledger/orderers/users/admin@fabric.com/tls/keystore/key.pem
 
 set +x
 

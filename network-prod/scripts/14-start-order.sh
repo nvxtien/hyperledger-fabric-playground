@@ -29,11 +29,11 @@ Environment=ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
 Environment=ORDERER_GENERAL_GENESISMETHOD=file
 Environment=ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/orderer/genesis.block
 Environment=ORDERER_GENERAL_LOCALMSPID=org0MSP
-Environment=ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/orderer/msp
+Environment=ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/fabric.com/msp
 Environment=ORDERER_GENERAL_TLS_ENABLED=true
-Environment=ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/orderer/tls-msp/signcerts/cert.pem
-Environment=ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/orderer/tls-msp/keystore/key.pem
-Environment=ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/orderer/tls-msp/tlscacerts/tls-tlsca-fabric-com-7150.pem]
+Environment=ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/orderers/orderer1.fabric.com/tls/signcerts/cert.pem
+Environment=ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/orderers/orderer1.fabric.com/tls/keystore/key.pem
+Environment=ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/orderers/orderer1.fabric.com/tls/tlscacerts/tls-tlsca-fabric-com-7150.pem]
 Environment=FABRIC_LOGGING_SPEC=DEBUG
 Environment=ORDERER_GENERAL_LOGLEVEL=DEBUG
 Environment=ORDERER_DEBUG_BROADCASTTRACEDIR=data/logs
