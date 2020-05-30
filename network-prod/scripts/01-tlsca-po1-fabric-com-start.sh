@@ -25,13 +25,13 @@ After=network-online.target
 [Service]
 Type=simple
 Restart=on-failure
-Environment=FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric-server
+Environment=FABRIC_CA_SERVER_HOME=/etc/hyperledger/po1.fabric.com/fabric-server
 Environment=FABRIC_CA_SERVER_TLS_ENABLED=true
 Environment=FABRIC_CA_SERVER_CA_NAME=tlsca.po1.fabric.com
 Environment=FABRIC_CA_SERVER_CSR_CN=tlsca.po1.fabric.com
 Environment=FABRIC_CA_SERVER_CSR_HOSTS=tlsca.po1.fabric.com
-Environment=FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-server/tlsca/tlsca.po1.fabric.com-key.pem
-Environment=FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-server/tlsca/tlsca.po1.fabric.com-cert.pem
+Environment=FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/po1.fabric.com/fabric-server/tlsca/tlsca.po1.fabric.com-key.pem
+Environment=FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/po1.fabric.com/fabric-server/tlsca/tlsca.po1.fabric.com-cert.pem
 Environment=FABRIC_CA_SERVER_DEBUG=true
 ExecStart=/usr/local/bin/fabric-ca-server start -d -b tls-peer-admin:tls-peer-adminpw --port 7151 --cfg.identities.allowremove
 [Install]
