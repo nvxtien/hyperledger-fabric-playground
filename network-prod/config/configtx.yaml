@@ -116,12 +116,12 @@ Orderer: &OrdererDefaults
 
   EtcdRaft:
     Consenters:
-      - Host: orderer1.po1.fabric.com
+      - Host: orderer1.fabric.com
         Port: 7050
         ClientTLSCert: /etc/hyperledger/orderers/orderer1.fabric.com/tls/signcerts/cert.pem
         ServerTLSCert: /etc/hyperledger/orderers/orderer1.fabric.com/tls/signcerts/cert.pem
   Addresses:
-    - orderer1.po1.fabric.com:7050
+    - orderer1.fabric.com:7050
 
   # Batch Timeout: The amount of time to wait before creating a batch
   BatchTimeout: 2s
