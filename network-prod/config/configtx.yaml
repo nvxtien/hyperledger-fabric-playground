@@ -33,8 +33,8 @@ Organizations:
         Type: Signature
         Rule: "OR('org0MSP.admin')"
 
-#    OrdererEndpoints:
-#      - orderer1.fabric.com:7050
+    OrdererEndpoints:
+      - orderer1.fabric.com:7050
 
   - &org1
 
@@ -70,6 +70,42 @@ Organizations:
       - Host: peer0.po1.fabric.com
         Port: 7051
 
+Capabilities:
+  # Channel capabilities apply to both the orderers and the peers and must be
+  # supported by both.
+  # Set the value of the capability to true to require it.
+  Channel: &ChannelCapabilities
+    # V2_0 capability ensures that orderers and peers behave according
+    # to v2.0 channel capabilities. Orderers and peers from
+    # prior releases would behave in an incompatible way, and are therefore
+    # not able to participate in channels at v2.0 capability.
+    # Prior to enabling V2.0 channel capabilities, ensure that all
+    # orderers and peers on a channel are at v2.0.0 or later.
+    V2_0: true
+
+  # Orderer capabilities apply only to the orderers, and may be safely
+  # used with prior release peers.
+  # Set the value of the capability to true to require it.
+  Orderer: &OrdererCapabilities
+    # V2_0 orderer capability ensures that orderers behave according
+    # to v2.0 orderer capabilities. Orderers from
+    # prior releases would behave in an incompatible way, and are therefore
+    # not able to participate in channels at v2.0 orderer capability.
+    # Prior to enabling V2.0 orderer capabilities, ensure that all
+    # orderers on channel are at v2.0.0 or later.
+    V2_0: true
+
+  # Application capabilities apply only to the peer network, and may be safely
+  # used with prior release orderers.
+  # Set the value of the capability to true to require it.
+  Application: &ApplicationCapabilities
+    # V2_0 application capability ensures that peers behave according
+    # to v2.0 application capabilities. Peers from
+    # prior releases would behave in an incompatible way, and are therefore
+    # not able to participate in channels at v2.0 application capability.
+    # Prior to enabling V2.0 application capabilities, ensure that all
+    # peers on channel are at v2.0.0 or later.
+    V2_0: true
 
 ################################################################################
 #
@@ -104,6 +140,9 @@ Application: &ApplicationDefaults
     Endorsement:
       Type: ImplicitMeta
       Rule: "MAJORITY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
 
 ################################################################################
 #
@@ -195,6 +234,12 @@ Channel: &ChannelDefaults
       Type: ImplicitMeta
       Rule: "MAJORITY Admins"
 
+  # Capabilities describes the channel level capabilities, see the
+  # dedicated Capabilities section elsewhere in this file for a full
+  # description
+  Capabilities:
+    <<: *ChannelCapabilities
+
 ################################################################################
 #
 #   Profile
@@ -211,6 +256,8 @@ Profiles:
       <<: *OrdererDefaults
       Organizations:
         - *org0
+      Capabilities:
+        <<: *OrdererCapabilities
     Consortiums:
       SampleConsortium:
         Organizations:
@@ -223,3 +270,5 @@ Profiles:
       <<: *ApplicationDefaults
       Organizations:
         - *org1
+      Capabilities:
+        <<: *ApplicationCapabilities

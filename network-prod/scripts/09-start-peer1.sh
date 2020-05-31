@@ -20,6 +20,7 @@ After=network-online.target
 [Service]
 Type=forking
 Restart=on-failure
+Environment=FABRIC_CFG_PATH=/etc/hyperledger/config
 Environment=CORE_PEER_ID=peer1.po1.fabric.com
 Environment=CORE_PEER_ADDRESS=peer1.po1.fabric.com:7053
 Environment=CORE_PEER_LISTENADDRESS=0.0.0.0:7053
@@ -32,17 +33,14 @@ Environment=CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/po1.fabric.com/peers/peer1.
 Environment=CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/po1.fabric.com/peers/peer1.po1.fabric.com/tls/keystore/key.pem
 Environment=CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/po1.fabric.com/peers/peer1.po1.fabric.com/tls/tlscacerts/tls-tlsca-po1-fabric-com-7151.pem
 Environment=CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/po1.fabric.com/peers/peer1.po1.fabric.com/msp
-Environment=FABRIC_CFG_PATH=/etc/hyperledger/config
 Environment=CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
 Environment=FABRIC_LOGGING_SPEC=debug
-
 Environment=CORE_PEER_GOSSIP_USELEADERELECTION=true
 Environment=CORE_PEER_GOSSIP_ORGLEADER=false
 Environment=CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.po1.fabric.com:7053
-Environment=CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
 Environment=CORE_PEER_GOSSIP_BOOTSTRAP=peer0.po1.fabric.com:7051
-
-ExecStart=/usr/local/bin/peer node start
+Environment=CORE_PEER_GOSSIP_SKIPHANDSHAKE=true
+ExecStart=/usr/local/bin/peer node start 2>&1
 [Install]
 WantedBy=multi-user.target
 EOF

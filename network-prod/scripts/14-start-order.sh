@@ -21,18 +21,14 @@ After=network-online.target
 Type=forking
 Restart=on-failure
 Environment=FABRIC_CFG_PATH=/etc/hyperledger/config
-
 Environment=ORDERER_HOME=/etc/hyperledger/orderer
-
 Environment=ORDERER_HOST=orderer1.fabric.com
 Environment=ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
 Environment=ORDERER_GENERAL_GENESISMETHOD=file
 Environment=ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/orderer/genesis.block
 Environment=ORDERER_GENERAL_LOCALMSPID=org0MSP
 #Environment=ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/fabric.com/msp
-
 Environment=ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/orderers/orderer1.fabric.com/msp
-
 Environment=ORDERER_GENERAL_TLS_ENABLED=true
 Environment=ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/orderers/orderer1.fabric.com/tls/signcerts/cert.pem
 Environment=ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/orderers/orderer1.fabric.com/tls/keystore/key.pem
@@ -40,7 +36,7 @@ Environment=ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/orderers/orderer1.fabr
 Environment=FABRIC_LOGGING_SPEC=DEBUG
 Environment=ORDERER_GENERAL_LOGLEVEL=DEBUG
 Environment=ORDERER_DEBUG_BROADCASTTRACEDIR=data/logs
-ExecStart=/usr/local/bin/orderer
+ExecStart=/usr/local/bin/orderer 2>&1
 [Install]
 WantedBy=multi-user.target
 EOF
