@@ -24,11 +24,11 @@ Organizations:
       Readers:
         Type: Signature
 #        Rule: "OR('org0MSP.member')"
-        Rule: "OR('SampleOrg.admin', 'SampleOrg.peer', 'SampleOrg.client')"
+        Rule: "OR('org0MSP.admin', 'org0MSP.peer', 'org0MSP.client')"
       Writers:
         Type: Signature
 #        Rule: "OR('org0MSP.member')"
-        Rule: "OR('SampleOrg.admin', 'SampleOrg.client')"
+        Rule: "OR('org0MSP.admin', 'org0MSP.client')"
       Admins:
         Type: Signature
         Rule: "OR('org0MSP.admin')"
