@@ -131,9 +131,12 @@ Application: &ApplicationDefaults
     Writers:
       Type: ImplicitMeta
       Rule: "ANY Writers"
+#    Admins:
+#      Type: ImplicitMeta
+#      Rule: "MAJORITY Admins"
     Admins:
-      Type: ImplicitMeta
-      Rule: "MAJORITY Admins"
+      Type: Signature
+      Rule: "OR('org1MSP.admin')"
     LifecycleEndorsement:
       Type: ImplicitMeta
       Rule: "MAJORITY Endorsement"
