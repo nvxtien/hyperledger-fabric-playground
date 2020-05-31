@@ -23,16 +23,18 @@ Organizations:
     Policies:
       Readers:
         Type: Signature
-        Rule: "OR('org0MSP.member')"
+#        Rule: "OR('org0MSP.member')"
+        Rule: "OR('SampleOrg.admin', 'SampleOrg.peer', 'SampleOrg.client')"
       Writers:
         Type: Signature
-        Rule: "OR('org0MSP.member')"
+#        Rule: "OR('org0MSP.member')"
+        Rule: "OR('SampleOrg.admin', 'SampleOrg.client')"
       Admins:
         Type: Signature
         Rule: "OR('org0MSP.admin')"
 
-    OrdererEndpoints:
-      - orderer1.fabric.com:7050
+#    OrdererEndpoints:
+#      - orderer1.fabric.com:7050
 
   - &org1
 
