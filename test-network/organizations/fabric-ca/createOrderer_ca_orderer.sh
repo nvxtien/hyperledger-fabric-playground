@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
   echo
 	echo "Enroll the CA admin"
   echo
